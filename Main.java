@@ -21,7 +21,7 @@ public class Main {
                 int intgr = scanner.nextInt();
                 System.out.println(test.is2Digits(intgr));
 
-                /*System.out.println("(isInRange) Please, input 2 numbers as a boarder and 1 in between");
+                System.out.println("(isInRange) Please, input 2 numbers as a boarder and 1 in between");
                 int a = scanner.nextInt(), b = scanner.nextInt(), c = scanner.nextInt();
                 System.out.println(test.isInRange(a, b, c));
 
@@ -64,7 +64,7 @@ public class Main {
 
                 System.out.println("(numLen) Please, input a number");
                 intgr = scanner.nextInt();
-                System.out.println(test.numLen(intgr));*/
+                System.out.println(test.numLen(intgr));
 
                 System.out.println("(square) Please, input a number");
                 intgr = scanner.nextInt();
