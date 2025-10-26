@@ -1,6 +1,6 @@
-package Lab3.Zavialov.name;
+package Lab3.Zavialov.Name;
 
-import Lab3.Zavialov.name.*;
+import Lab3.Zavialov.Name.*;
 
 public class HumanUpd {
     private int height;
@@ -57,3 +57,4 @@ public class HumanUpd {
         return (name.toString() + " " + height);
     }
 }
+
