@@ -1,4 +1,4 @@
-package Lab3.Zavialov.misc;
+package Lab3.Zavialov.Misc;
 
 public class Dot {
     private int x;
@@ -35,3 +35,4 @@ public class Dot {
         return new Dot(this.x, this.y, this.z);
     }
 }
+
