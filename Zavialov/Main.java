@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 import Lab1.*;
 import Lab2.*;
-import Lab3.Zavialov.name.*;
-import Lab3.Zavialov.misc.*;
+import Lab3.Zavialov.Name.*;
+import Lab3.Zavialov.Misc.*;
 import Lab3.Zavialov.Birds.*;
 
 public class Main {
@@ -242,3 +242,4 @@ public class Main {
     }
 
 }
+
