@@ -1,4 +1,4 @@
-package Lab3.Zavialov.misc;
+package Lab3.Zavialov.Misc;
 import java.util.Random;
 
 
@@ -95,3 +95,4 @@ public class Secret {
         return(this.name + ": its a secret! " + this.knowledge);
     }
 }
+
