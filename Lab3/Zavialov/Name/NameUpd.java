@@ -1,4 +1,4 @@
-package Lab3.Zavialov.name;
+package Lab3.Zavialov.Name;
 
 public class NameUpd {
     String Fname;
@@ -28,3 +28,4 @@ public class NameUpd {
         return (this.Sname + " " + this.Fname + " " + this.Lname);
     }
 }
+
