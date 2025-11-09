@@ -1,12 +1,15 @@
 package Zavialov;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import Lab1.*;
 import Lab2.*;
-import Lab3.Zavialov.Name.*;
-import Lab3.Zavialov.Misc.*;
+import Lab3.Zavialov.name.*;
+import Lab3.Zavialov.misc.*;
 import Lab3.Zavialov.Birds.*;
+import Lab4.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -232,8 +235,35 @@ public class Main {
                 System.out.println("List of meow-able object");
                 MeowCheck[] meowArray = {cat1, cat2};
                 MeowChecking.makeAllMeow(meowArray);
+            case "4" -> {
+                var box = new Box<Integer>(3);
+                System.out.println(box.lookInside());
+                box.putInside(5);
+                System.out.println(box.unpackItem());
+                box.putInside(5);
+                System.out.println(box.lookInside() + "\n");
 
+                var vault1 = new Vault<Integer>(null, 0);
+                System.out.println(vault1.lookInside());
+                var vault2 = new Vault<Integer>(99, -1);
+                System.out.println(vault2.lookInside());
+                var vault3 = new Vault<String>(null, "default");
+                System.out.println(vault3.lookInside());
+                var vault4 = new Vault<String>("hello", "hello world");
+                System.out.println(vault4.lookInside() + "\n");
 
+                var boxdot = new Box<Dot>(new Dot(2, 2, 3));
+                System.out.println(boxdot.lookInside().toString());
+
+                List<String> tester1 = List.<String>of("asd", "afsdg", "agehdad");
+                System.out.println(Utilities.task1(tester1));
+                ArrayList<Integer> tester2 = new ArrayList<>(Arrays.asList(1, -3, 7));
+                System.out.println(Utilities.task1(tester2));
+                List<int[]> tester3 = Arrays.asList(
+                        new int[]{1, 2, 3},
+                        new int[]{4, 5},
+                        new int[]{6, 7, 8, 9});
+                System.out.println(Utilities.task1(tester3) + "\n");
             }
             default -> System.out.println("Incorrect input, this lab doesn't exist yet. " +
                     "try again be restarting the program.");
@@ -242,4 +272,5 @@ public class Main {
     }
 
 }
+
 
