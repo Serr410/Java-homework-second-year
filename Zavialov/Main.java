@@ -6,10 +6,15 @@ import java.util.List;
 import java.util.Scanner;
 import Lab1.*;
 import Lab2.*;
-import Lab3.Zavialov.Name.*;
-import Lab3.Zavialov.Misc.*;
+import Lab3.Zavialov.name.*;
+import Lab3.Zavialov.misc.*;
 import Lab3.Zavialov.Birds.*;
 import Lab4.*;
+
+import static Lab4.ListFilter.filterList;
+import static Lab4.ListReducer.reduceList;
+import static Lab4.ListTransformer.transformList;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -235,9 +240,10 @@ public class Main {
                 System.out.println("List of meow-able object");
                 MeowCheck[] meowArray = {cat1, cat2};
                 MeowChecking.makeAllMeow(meowArray);
+
+
             }
             case "4" -> {
-                System.out.println("Task 1" + "\n");
                 var box = new Box<Integer>(3);
                 System.out.println(box.lookInside());
                 box.putInside(5);
@@ -245,7 +251,6 @@ public class Main {
                 box.putInside(5);
                 System.out.println(box.lookInside() + "\n");
 
-                System.out.println("Task 2" + "\n");
                 var vault1 = new Vault<Integer>(null, 0);
                 System.out.println(vault1.lookInside());
                 var vault2 = new Vault<Integer>(99, -1);
@@ -255,26 +260,102 @@ public class Main {
                 var vault4 = new Vault<String>("hello", "hello world");
                 System.out.println(vault4.lookInside() + "\n");
 
-                System.out.println("Task 3" + "\n");
                 var boxdot = new Box<Dot>(new Dot(2, 2, 3));
-                System.out.println(boxdot.lookInside().toString() + "\n");
+                System.out.println(boxdot.lookInside().toString());
 
-                System.out.println("Task 4.1" + "\n");
-                List<String> tester1 = List.<String>of("ad", "afsdg", "agehdad");
-                ArrayList<Integer> tester2 = new ArrayList<>(Arrays.asList(1, -3, 7));
-                List<int[]> tester3 = Arrays.asList(
+                List<String> strings = List.of("qwerty", "asdfg", "zx");
+                List<Integer> stringLengths = transformList(strings, new Transformer<String, Integer>() {
+                    public Integer apply(String value) {
+                        return value.length();
+                    }
+                });
+                System.out.println("String length: " + stringLengths);
+                List<Integer> numbers = List.of(1, -3, 7);
+                List<Integer> positiveNumbers = transformList(numbers, new Transformer<Integer, Integer>() {
+                    public Integer apply(Integer value) {
+                        return Math.abs(value);
+                    }
+                });
+                System.out.println("Positive numbers: " + positiveNumbers);
+                List<int[]> arrays = List.of(
                         new int[]{1, 2, 3},
-                        new int[]{-4, -5},
-                        new int[]{6, 7, 8, 9});
+                        new int[]{-5, -4, -10},
+                        new int[]{10, 20, 30, 5}
+                );
+                List<Integer> maxValues = transformList(arrays, new Transformer<int[], Integer>() {
+                    public Integer apply(int[] value) {
+                        int max = value[0];
+                        for (int num : value) {
+                            if (num > max) {
+                                max = num;
+                            }
+                        }
+                        return max;
+                    }
+                });
+                System.out.println("Max value: " + maxValues);
 
-                System.out.println(Utilities.task1(tester1));
-                System.out.println(Utilities.task1(tester2));
-                System.out.println(Utilities.task1(tester3));
-                System.out.println("Task 4.2" + "\n");
-                System.out.println(Utilities.task2(tester1));
-                System.out.println(Utilities.task2(tester2));
-                System.out.println(Arrays.deepToString(Utilities.task2(tester3).toArray()) + "\n");
-                System.out.println("Task 4.3" + "\n");
+                List<String> filteredStrings = filterList(strings, new Filter<String>() {
+                    public boolean test(String value) {
+                        return value.length() >= 3;
+                    }
+                });
+                System.out.println("String greater than 3: " + filteredStrings);
+                List<Integer> filteredNumbers = filterList(numbers, new Filter<Integer>() {
+                    public boolean test(Integer value) {
+                        return value > 0;
+                    }
+                });
+                System.out.println("Positive numbers: " + filteredNumbers);
+                List<int[]> arraysWithoutPositive = filterList(arrays, new Filter<int[]>() {
+                    public boolean test(int[] array) {
+                        for (int num : array) {
+                            if (num > 0) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                });
+                System.out.print("Negative arrays: ");
+                for (int[] arr : arraysWithoutPositive) {
+                    System.out.print("[");
+                    for (int i = 0; i < arr.length; i++) {
+                        System.out.print(arr[i]);
+                        if (i < arr.length - 1) System.out.print(", ");
+                    }
+                    System.out.println("]");
+                }
+
+                String sum = reduceList(strings, new Reducer<String>() {
+                    public String apply(String accumulator, String current) {
+                        return accumulator + current;
+                    }
+                }, "");
+                System.out.println("Summed up: " + sum);
+
+                Integer summary = reduceList(numbers, new Reducer<Integer>() {
+                    public Integer apply(Integer accumulator, Integer current) {
+                        return accumulator + current;
+                    }
+                }, 0);
+                System.out.println("Summed up: " + summary);
+                List<List<Integer>>GrandList = List.of(
+                        List.of(1, 2, 3),
+                        List.of(4, 5),
+                        List.of(6, 7, 8, 9)
+                );
+                List<Integer> sizes = new ArrayList<>();
+                for (List<Integer> list : GrandList) {
+                    sizes.add(list.size());
+                }
+                Integer totalElements3 = reduceList(sizes, new Reducer<Integer>() {
+                    public Integer apply(Integer accumulator, Integer current) {
+                        return accumulator + current;
+                    }
+                }, 0);
+                System.out.println("Summed up: " + totalElements3);
+
 
             }
             default -> System.out.println("Incorrect input, this lab doesn't exist yet. " +
