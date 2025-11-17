@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListFilter {
-
-    // Метод для фильтрации списка по условию
     public static <T> List<T> filterList(List<T> list, Filter<T> filter) {
         List<T> result = new ArrayList<>();
         for (T item : list) {
@@ -15,4 +13,5 @@ public class ListFilter {
         }
         return result;
     }
+
 }
