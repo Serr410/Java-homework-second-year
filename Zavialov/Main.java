@@ -10,10 +10,12 @@ import Lab3.Zavialov.name.*;
 import Lab3.Zavialov.misc.*;
 import Lab3.Zavialov.Birds.*;
 import Lab4.*;
+import Lab5.*;
 
 import static Lab4.ListFilter.filterList;
 import static Lab4.ListReducer.reduceList;
 import static Lab4.ListTransformer.transformList;
+import static Lab5.Remover.removeConsecutiveDuplicates;
 
 
 public class Main {
@@ -358,6 +360,72 @@ public class Main {
 
 
             }
+                case "5" -> {
+                Fraction fraction1 = new Fraction(1, 2);
+                Fraction fraction2 = new Fraction(2, 4);
+                Fraction fraction3 = new Fraction(1, 2);
+                System.out.println("Fraction 1: " + fraction1);
+                System.out.println("Fraction 2: " + fraction2);
+                System.out.println("Fraction 3: " + fraction3);
+                System.out.println("Decimal value of fraction 1: " + fraction1.getDecimalValue());
+                System.out.println("Decimal value of fraction 2: " + fraction2.getDecimalValue());
+                System.out.println("First computation (cached): " + fraction1.getDecimalValue());
+                System.out.println("Second computation (from cache): " + fraction1.getDecimalValue());
+                System.out.println("fraction1.equals(fraction2): " + fraction1.equals(fraction2));
+                System.out.println("fraction1.equals(fraction3): " + fraction1.equals(fraction3));
+                Fraction negativeFraction = new Fraction(-1, -2);
+                System.out.println("Negative fraction: " + negativeFraction);
+                System.out.println("Decimal value: " + negativeFraction.getDecimalValue());
+                fraction1.setNumerator(3);
+                System.out.println("After changing numerator: " + fraction1);
+                System.out.println("Decimal value: " + fraction1.getDecimalValue());
+                System.out.println("Before denominator change: " + fraction1.getDecimalValue());
+                fraction1.setDenominator(6);
+                System.out.println("After denominator change: " + fraction1.getDecimalValue());
+
+                Cat originalCat = new Cat("Barsik");
+                System.out.println("\nCreated: " + originalCat);
+                MeowCounter countingCat = new MeowCounter(originalCat);
+                countingCat.Meow(3);
+                System.out.println("\nMeowed " + countingCat.getCounter() + " times");
+
+                List<Integer> numbers = List.of(1, 1, 2, 2, 2, 3, 1, 1, 4, 4, 5, 5, 5, 5);
+                List<Integer> uniqueNumbers = removeConsecutiveDuplicates(numbers);
+
+                System.out.println("Original: " + numbers);
+                System.out.println("Cleared: " + uniqueNumbers + "\n");
+
+                //SpoiledMilk.Milk();
+
+                System.out.println(Arrays.toString(Texter.digits("text.txt")) + "\n"); //Use full path, otherwise won't work
+
+                Queue<Integer> queue1 = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 1));
+                Queue<Integer> queue2 = new LinkedList<>(Arrays.asList(1, 2, 2, 3, 4));
+                System.out.println("Queue [1, 2, 3, 4, 1]: " + QueueCheck.hasEqualNeighbors(queue1));
+                System.out.println("Queue [1, 2, 2, 3, 4]: " + QueueCheck.hasEqualNeighbors(queue2) + "\n");
+
+                List<Point> points = Arrays.asList(
+                        new Point(3, -2),
+                        new Point(1, 5),
+                        new Point(3, -2),  // double
+                        new Point(5, -7),  // double negative
+                        new Point(2, 3),
+                        new Point(1, 5),   // double
+                        new Point(4, 4),
+                        new Point(0, -1),
+                        new Point(5, 7)    // double to negative
+                );
+
+                System.out.println("Starting points:");
+                points.forEach(System.out::println);
+
+                Polyline polyline = StreamPoint.processPoints(points);
+
+                System.out.println("\nFinal line:");
+                System.out.println(polyline + "\n");
+
+                NameTester.tester("people.txt");  //Use full path, otherwise won't work
+            }
             default -> System.out.println("Incorrect input, this lab doesn't exist yet. " +
                     "try again be restarting the program.");
         }
@@ -365,3 +433,4 @@ public class Main {
     }
 
 }
+
