@@ -1,6 +1,6 @@
 package Lab3.Zavialov.Birds;
 
-public class Bird_basic {
+public class BirdBasic {
     protected String song;
     protected int legs;
     protected String food;
@@ -16,8 +16,8 @@ public class Bird_basic {
     public String getFood() {
         return this.food;
     }
-    public boolean Is_flying() {
-        return this.is_flying;
+    public boolean IsFlying() {
+        return this.isFlying;
     }
     public String getSpec() {
         return this.spec;
@@ -28,8 +28,8 @@ public class Bird_basic {
     public void setFood(String food) {
         this.food = food;
     }
-    public void setIs_flying(boolean is_flying) {
-        this.is_flying = is_flying;
+    public void setIsFlying(boolean isFlying) {
+        this.isFlying = isFlying;
     }
     public void setLegs(int legs) {
         this.legs = legs;
@@ -38,11 +38,11 @@ public class Bird_basic {
         this.spec = spec;
     }
 
-    protected Bird_basic(String spec, String song) {
+    protected BirdBasic(String spec, String song) {
         this.song = song;
         this.legs = 2;
         this.food = "Seeds";
-        this.is_flying = true;
+        this.isFlying = true;
         this.spec = spec;
     }
 
