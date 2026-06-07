@@ -1,6 +1,6 @@
 package Lab3.Zavialov.Birds;
 
-public class Sparrow extends Bird_basic {
+public class Sparrow extends BirdBasic {
     public Sparrow() {
         super("Sparrow", "Chip");
     }
