@@ -2,7 +2,7 @@ package Lab3.Zavialov.Birds;
 
 import java.util.Random;
 
-public class Parrot extends Bird_basic {
+public class Parrot extends BirdBasic {
     public Parrot() {
         super("Parrot", "Kesha horoshi");
     }
