@@ -2,7 +2,7 @@ package Lab3.Zavialov.Birds;
 
 import java.util.Random;
 
-public class Cuckoo extends Bird_basic {
+public class Cuckoo extends BirdBasic {
     public Cuckoo() {
         super("Cuckoo", "Cuckoo");
     }
